@@ -12,6 +12,7 @@ server.set("views", path.join(__dirname, "views"));
 server.listen(port, (error) => {
   if (error) {
     console.log(`whomp big ${error}`);
+    return;
   }
   console.log("running");
 });
