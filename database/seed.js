@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const { Client } = require("pg");
 const SQL = `
 CREATE TABLE IF NOT EXISTS brands (
