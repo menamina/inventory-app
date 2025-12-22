@@ -1,5 +1,12 @@
 <html>
   <body>
     <h2>Inventory at Cakeface.</h2>
+    <div>
+      <% if (categories.length === 0) { %>
+      <p>No categories yet</p>
+      <%} else { %> <% categories.forEach(category => { %>
+      <div><%= category.category %></div>
+      <%})%> <% } %>
+    </div>
   </body>
 </html>
