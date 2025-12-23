@@ -1,6 +1,9 @@
 <html>
   <body>
     <form action="/createCategory" method="POST">
+      <% if (error) { %>
+      <h2><%= error %></h2>
+      <% } %>
       <label for="category">Category:</label>
       <input name="category" id="category" />
     </form>

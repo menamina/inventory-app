@@ -39,10 +39,16 @@ function getCreateProduct(req, res) {
 
 async function postCreatedProduct(req, res) {
   const product = req.body.product;
-  const djdh = await db.postProduct;
-  // if product already there -- else
-  // put ^^ inside the thing
-  res.redirect("/");
+  try {
+    await db.postProduct(product);
+    res.redirect("/");
+  } catch (error) {
+    if (error) {
+      return res.render("createProduct", {
+        error: "This product already exists",
+      });
+    }
+  }
 }
 
 module.exports = {

@@ -15,9 +15,13 @@ async function getProductsByCategory(catID) {
   return rows;
 }
 
-async function postCategory(category) {}
+async function postCategory(category) {
+  await pool.query("INSERT INTO categories (category) VALUES ($1)", [category]);
+}
 
-async function postProduct(product) {}
+async function postProduct(product) {
+  await pool.query("INSERT INTO products (product) VALUES ($1)", [product]);
+}
 
 module.exports = {
   getAllCategories,
