@@ -35,10 +35,10 @@ async function postCreatedCategory(req, res) {
   }
 }
 
-function getUpdateCategory(req, res) {
+async function getUpdateCategory(req, res) {
   const category = await db.getCategoryById(req.params.id);
   res.render("updateCategory", {
-    category
+    category,
   });
 }
 
@@ -70,8 +70,11 @@ async function postCreatedProduct(req, res) {
   }
 }
 
-function getUpdateProduct() {
-  red.render("updateProduct");
+async function getUpdateProduct(req, res) {
+  const product = await db.getProductByID(req.params.id);
+  res.render("updateProduct", {
+    product,
+  });
 }
 
 async function postUpdateProduct(req, res) {}

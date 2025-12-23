@@ -23,9 +23,19 @@ async function postProduct(product) {
   await pool.query("INSERT INTO products (product) VALUES ($1)", [product]);
 }
 
+async function getCategoryById(id) {
+  await pool.query("SELECT * FROM categories WHERE id = $1", [id]);
+}
+
+async function getProductById(id) {
+  await pool.query("SELECT * FROM products WHERE id = $1", [id]);
+}
+
 module.exports = {
   getAllCategories,
   getProductsByCategory,
   postCategory,
   postProduct,
+  getCategoryById,
+  getProductById,
 };

@@ -1,8 +1,14 @@
 <html>
   <body>
     <form action="/:id/edit" method="POST">
-      <label>Product</label>
-      <input name="product" value="<%= products.product %>" />
+      <label>Product:</label>
+      <input name="name" value="<%= product.name %>" />
+      <label for="price">Price:</label>
+      <input name="price" id="price" value-="<% product.price%>" />
+      <label>Brand:</label>
+      <input name="brand" value="<%= product.category_id %>" />
+      <label>Category:</label>
+      <input name="category" value="<%= product.category_id %>" />
     </form>
   </body>
 </html>
