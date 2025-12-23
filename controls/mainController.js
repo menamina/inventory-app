@@ -9,9 +9,9 @@ async function getAllCategories(req, res) {
 
 async function getSelectedCategory(req, res) {
   const catID = req.params.id;
-  const catProducts = await db.getProductsByCategory(catID);
+  const products = await db.getProductsByCategory(catID);
   res.render("categoryItems", {
-    catProducts,
+    products,
   });
 }
 
@@ -35,7 +35,7 @@ async function postCreatedCategory(req, res) {
   }
 }
 
-function getUpdateCategory() {
+function getUpdateCategory(req, res) {
   res.render("updateCategory");
 }
 
