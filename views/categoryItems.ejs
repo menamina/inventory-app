@@ -6,10 +6,11 @@
       <a href="/products/newProduct"><p>add a product to <%= product %></p></a>
       <%} else { %> <% products.forEach(product => { %>
       <a href="/products/<%= product.id%>/edit"
-        ><div><%= product.product %></div></a
+        ><div><%= product.name %></div></a
       >
       <div>
-        <a href="/products/<% product.id%>/delete">delete</a>
+        <form action="products/<%product.id%>/delete" method="POST">
+          <button type="submit">delete</button>
       </div>
 
       <%})%> <% } %>

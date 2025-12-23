@@ -93,11 +93,10 @@ async function postUpdateProduct(req, res) {
   }
 }
 
-function getDeleteProduct() {
-  res.render("deleteProduct");
+async function deleteProduct(req, res) {
+  await db.deleteProduct(req.params.id);
+  res.redirect("/");
 }
-
-async function deleteProduct(req, res) {}
 
 // exports
 

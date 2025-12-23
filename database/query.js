@@ -19,12 +19,12 @@ async function postCategory(category) {
   await pool.query("INSERT INTO categories (category) VALUES ($1)", [category]);
 }
 
-async function postProduct(product) {
-  await pool.query("INSERT INTO products (product) VALUES ($1)", [product]);
-}
-
 async function getCategoryById(id) {
   await pool.query("SELECT * FROM categories WHERE id = $1", [id]);
+}
+
+async function postProduct(product) {
+  await pool.query("INSERT INTO products (product) VALUES ($1)", [product]);
 }
 
 async function getProductById(id) {
@@ -37,6 +37,11 @@ async function updateProduct(name, price, brand_id, category_id, id) {
     [name, price, brand_id, category_id, id]
   );
 }
+
+async function deleteProduct(id) {
+  await pool.query("DELETE FROM products WHERE id = $1", [id]);
+}
+
 module.exports = {
   getAllCategories,
   getProductsByCategory,
@@ -45,4 +50,5 @@ module.exports = {
   getCategoryById,
   getProductById,
   updateProduct,
+  deleteProduct,
 };
