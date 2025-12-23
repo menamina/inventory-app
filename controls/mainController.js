@@ -19,8 +19,30 @@ function getCreateCategory(req, res) {
   res.render("createCategory");
 }
 
+async function postCreatedCategory(req, res) {
+  const category = req.body.category;
+  try {
+    await db.postCategory(category);
+    res.redirect("/");
+  } catch (error) {
+    if (error) {
+      return res.render("createCategory", {
+        error: "This category already exists",
+      });
+    }
+  }
+}
+
 function getCreateProduct(req, res) {
   res.render("createProduct");
+}
+
+async function postCreatedProduct(req, res) {
+  const product = req.body.product;
+  const djdh = await db.postProduct;
+  // if product already there -- else
+  // put ^^ inside the thing
+  res.redirect("/");
 }
 
 module.exports = {
@@ -28,4 +50,6 @@ module.exports = {
   getSelectedCategory,
   getCreateCategory,
   getCreateProduct,
+  postCreatedCategory,
+  postCreatedProduct,
 };

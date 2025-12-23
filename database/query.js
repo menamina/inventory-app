@@ -15,7 +15,13 @@ async function getProductsByCategory(catID) {
   return rows;
 }
 
+async function postCategory(category) {}
+
+async function postProduct(product) {}
+
 module.exports = {
   getAllCategories,
   getProductsByCategory,
+  postCategory,
+  postProduct,
 };
