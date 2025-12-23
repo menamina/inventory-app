@@ -1,0 +1,20 @@
+<html>
+  <body>
+    <div>
+      <% if (products.length === 0) { %>
+      <p>No products yet</p>
+      <a href="/createCategory"><p>add a product to <%= category %></p></a>
+      <%} else { %> <% categories.forEach(category => { %>
+      <a href="/categories/<%= category.id%>"
+        ><div><%= category.category %></div></a
+      >
+      <div>
+        <a href="/updateCategory">update</a>
+        <a href="/deleteCategory">delete</a>
+      </div>
+
+      <%})%> <% } %>
+      <a href="/createCategory"><p>create a category</p></a>
+    </div>
+  </body>
+</html>

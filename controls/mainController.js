@@ -15,6 +15,8 @@ async function getSelectedCategory(req, res) {
   });
 }
 
+// CAT METHODS
+
 function getCreateCategory(req, res) {
   res.render("createCategory");
 }
@@ -32,6 +34,20 @@ async function postCreatedCategory(req, res) {
     }
   }
 }
+
+function getUpdateCategory() {
+  res.render("updateCategory");
+}
+
+async function postUpdateCategory(req, res) {}
+
+function getDeleteCategory() {
+  res.render("deleteCategory");
+}
+
+async function deleteCategory(req, res) {}
+
+// PROD METHODS
 
 function getCreateProduct(req, res) {
   res.render("createProduct");
@@ -51,6 +67,20 @@ async function postCreatedProduct(req, res) {
   }
 }
 
+function getUpdateProduct() {
+  red.render("updateProduct");
+}
+
+async function postUpdateProduct(req, res) {}
+
+function getDeleteProduct() {
+  res.render("deleteProduct");
+}
+
+async function deleteProduct(req, res) {}
+
+// exports
+
 module.exports = {
   getAllCategories,
   getSelectedCategory,
@@ -58,4 +88,12 @@ module.exports = {
   getCreateProduct,
   postCreatedCategory,
   postCreatedProduct,
+  postUpdateCategory,
+  deleteCategory,
+  postUpdateProduct,
+  deleteProduct,
+  getUpdateCategory,
+  getUpdateProduct,
+  getDeleteCategory,
+  getDeleteProduct,
 };
