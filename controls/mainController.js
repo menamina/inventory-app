@@ -12,8 +12,8 @@ async function getAllCategories(req, res) {
 }
 
 async function getSelectedCategory(req, res) {
+  const catID = req.params.id;
   try {
-    const catID = req.params.id;
     const products = await db.getProductsByCategory(catID);
     res.render("categoryItems", {
       products,
@@ -71,8 +71,8 @@ async function postUpdateCategory(req, res) {
 }
 
 async function deleteCategory(req, res) {
+  const id = req.params.id;
   try {
-    const id = req.params.id;
     await db.deleteCategory(id);
     res.redirect("/");
   } catch (error) {
