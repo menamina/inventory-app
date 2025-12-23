@@ -3,18 +3,15 @@
     <div>
       <% if (products.length === 0) { %>
       <p>No products yet</p>
-      <a href="/createCategory"><p>add a product to <%= product %></p></a>
+      <a href="/newProduct"><p>add a product to <%= product %></p></a>
       <%} else { %> <% products.forEach(product => { %>
-      <a href="/categories/<%= product.id%>"
-        ><div><%= product.product %></div></a
-      >
+      <a href="/<%= product.id%>/edit"><div><%= product.product %></div></a>
       <div>
-        <a href="/updateProduct/<% product.id %>">update</a>
-        <a href="/deleteProduct/<% product.id%>">delete</a>
+        <a href="/<% product.id%>/delete">delete</a>
       </div>
 
       <%})%> <% } %>
-      <a href="/createProduct"><p>create a product</p></a>
+      <a href="/newProduct"><p>create a product</p></a>
     </div>
   </body>
 </html>
