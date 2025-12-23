@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS products (
 );
 
 INSERT INTO brands (brand)
-VALUES ('L'oreal'), ('Black Radiance'), ('Haus Labs');
+VALUES ('Loreal'), ('Black Radiance'), ('Haus Labs');
 
 INSERT INTO categories (category)
 VALUES ('Blush'), ('Bronzer'), ('Base'), ('Palette');

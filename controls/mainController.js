@@ -89,7 +89,7 @@ async function getUpdateProduct(req, res) {
 }
 
 async function postUpdateProduct(req, res) {
-  const { id } = req.params.id;
+  const id = req.params.id;
   const { name, price, brand, category } = req.body;
 
   try {
