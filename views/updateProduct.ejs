@@ -1,6 +1,9 @@
 <html>
   <body>
     <form action="/products/:id/edit" method="POST">
+      <% if (error) { %>
+      <p>Whoops! <%=error%></p>
+      <% }%>
       <label>Product:</label>
       <input name="name" value="<%= product.name %>" />
       <label for="price">Price:</label>

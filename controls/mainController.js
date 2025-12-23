@@ -83,13 +83,14 @@ async function postUpdateProduct(req, res) {
   const pPrice = req.body.price;
   const pBrand = req.body.brand;
   const pCategory = req.body.category;
-  const postProduct = await db.updateProduct(
-    id,
-    pName,
-    pPrice,
-    pBrand,
-    pCategory
-  );
+  try {
+    await db.updateProduct(pName, pPrice, pBrand, pCategory, id);
+    res.redirect("/");
+  } catch (err) {
+    if (err) {
+      res.render("updateProduct", { error: err });
+    }
+  }
 }
 
 function getDeleteProduct() {

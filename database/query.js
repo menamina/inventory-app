@@ -31,10 +31,10 @@ async function getProductById(id) {
   await pool.query("SELECT * FROM products WHERE id = $1", [id]);
 }
 
-async function updateProduct(id, name, price, brand, category) {
+async function updateProduct(name, price, brand_id, category_id, id) {
   await pool.query(
     "UPDATE products SET name  = $1, price = $2, brand_id = $3, category_id = $4 WHERE id = $5",
-    [name, price, brand_nid, category_id, id]
+    [name, price, brand_id, category_id, id]
   );
 }
 module.exports = {
