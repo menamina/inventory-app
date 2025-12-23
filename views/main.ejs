@@ -1,6 +1,6 @@
 <html>
   <body>
-    <h2>Inventory at Cakeface.</h2>
+    <h2>Cakeface. Inventory</h2>
     <div>
       <% if (categories.length === 0) { %>
       <p>No categories yet</p>
@@ -9,10 +9,13 @@
       <a href="/categories/<%= category.id%>"
         ><div><%= category.category %></div></a
       >
+      <div>
+        <a href="/updateCategory">update</a>
+        <a href="/deleteCategory">delete</a>
+      </div>
 
-      <%})%>
+      <%})%> <% } %>
       <a href="/createCategory"><p>create a category</p></a>
-      <% } %>
     </div>
   </body>
 </html>
