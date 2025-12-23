@@ -77,7 +77,20 @@ async function getUpdateProduct(req, res) {
   });
 }
 
-async function postUpdateProduct(req, res) {}
+async function postUpdateProduct(req, res) {
+  const id = req.params.id;
+  const pName = req.body.name;
+  const pPrice = req.body.price;
+  const pBrand = req.body.brand;
+  const pCategory = req.body.category;
+  const postProduct = await db.updateProduct(
+    id,
+    pName,
+    pPrice,
+    pBrand,
+    pCategory
+  );
+}
 
 function getDeleteProduct() {
   res.render("deleteProduct");
