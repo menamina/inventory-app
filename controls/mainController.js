@@ -15,7 +15,17 @@ async function getSelectedCategory(req, res) {
   });
 }
 
+function getCreateCategory(req, res) {
+  res.render("createCategory");
+}
+
+function getCreateProduct(req, res) {
+  res.render("createProduct");
+}
+
 module.exports = {
   getAllCategories,
   getSelectedCategory,
+  getCreateCategory,
+  getCreateProduct,
 };
