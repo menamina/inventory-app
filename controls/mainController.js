@@ -55,10 +55,6 @@ async function postUpdateCategory(req, res) {
   }
 }
 
-function getDeleteCategory() {
-  res.render("deleteCategory");
-}
-
 async function deleteCategory(req, res) {
   const id = req.params.id;
   await db.deleteCategory(id);
@@ -72,9 +68,9 @@ function getCreateProduct(req, res) {
 }
 
 async function postCreatedProduct(req, res) {
-  const product = req.body.product;
+  const { name, price, brand, category } = req.body;
   try {
-    await db.postProduct(product);
+    await db.postProduct(name, price, brand, category);
     res.redirect("/");
   } catch (error) {
     if (error) {
@@ -93,13 +89,11 @@ async function getUpdateProduct(req, res) {
 }
 
 async function postUpdateProduct(req, res) {
-  const id = req.params.id;
-  const pName = req.body.name;
-  const pPrice = req.body.price;
-  const pBrand = req.body.brand;
-  const pCategory = req.body.category;
+  const { id } = req.params.id;
+  const { name, price, brand, category } = req.body;
+
   try {
-    await db.updateProduct(pName, pPrice, pBrand, pCategory, id);
+    await db.updateProduct(name, price, brand, category, id);
     res.redirect("/");
   } catch (err) {
     if (err) {
@@ -128,6 +122,4 @@ module.exports = {
   deleteProduct,
   getUpdateCategory,
   getUpdateProduct,
-  getDeleteCategory,
-  deleteProduct,
 };

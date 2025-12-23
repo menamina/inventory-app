@@ -10,14 +10,14 @@
         ><div><%= category.category %></div></a
       >
       <div>
-        <a href="/<%= category.id%>/edit">update</a>
+        <a href="/category/<%= category.id%>/edit">update</a>
         <form action="/categories/<%=category.id%>/delete" method="POST">
           <button type="submit">delete</button>
         </form>
       </div>
 
       <%})%> <% } %>
-      <a href="/newCategory"><p>create a category</p></a>
+      <a href="/categories/newCategory"><p>create a category</p></a>
     </div>
   </body>
 </html>
