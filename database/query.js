@@ -7,6 +7,14 @@ async function getAllCategories() {
   return rows;
 }
 
+async function getCategory() {
+  const { rows } = await pool.query(
+    "SELECT * FROM products WHERE category_id = $1",
+    []
+  );
+  return rows;
+}
+
 module.exports = {
   getAllCategories,
 };

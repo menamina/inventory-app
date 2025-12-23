@@ -7,6 +7,15 @@ async function getAllCategories(req, res) {
   });
 }
 
+async function getSelectedCategory(req, res) {
+  const catID = req.params.id;
+  const catProducts = await db.getProductsByCategory(catID);
+  res.render("categoryItems", {
+    catProducts,
+  });
+}
+
 module.exports = {
   getAllCategories,
+  getSelectedCategory,
 };
