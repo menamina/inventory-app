@@ -1,6 +1,9 @@
 <html>
   <body>
-    <form action="/updateCategory" method="POST">
+    <form action="/categories/:id/edit" method="POST">
+      <% if (error) { %>
+      <p>Whoops! <%= error %></p>
+      <% }%>
       <label>Category</label>
       <input name="category" value="<%= category.category %>" />
     </form>

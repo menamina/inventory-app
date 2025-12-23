@@ -4,7 +4,7 @@
     <div>
       <% if (categories.length === 0) { %>
       <p>No categories yet</p>
-      <a href="/newCategory"><p>create a category</p></a>
+      <a href="/categories/newCategory"><p>create a category</p></a>
       <%} else { %> <% categories.forEach(category => { %>
       <a href="/categories/<%= category.id%>"
         ><div><%= category.category %></div></a

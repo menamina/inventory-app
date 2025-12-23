@@ -19,6 +19,8 @@ async function postCategory(category) {
   await pool.query("INSERT INTO categories (category) VALUES ($1)", [category]);
 }
 
+async function updateCategory(category, id) {}
+
 async function getCategoryById(id) {
   await pool.query("SELECT * FROM categories WHERE id = $1", [id]);
 }

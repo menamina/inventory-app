@@ -42,7 +42,9 @@ async function getUpdateCategory(req, res) {
   });
 }
 
-async function postUpdateCategory(req, res) {}
+async function postUpdateCategory(req, res) {
+  const categoryName = req.body.category;
+}
 
 function getDeleteCategory() {
   res.render("deleteCategory");
@@ -114,5 +116,5 @@ module.exports = {
   getUpdateCategory,
   getUpdateProduct,
   getDeleteCategory,
-  getDeleteProduct,
+  deleteProduct,
 };

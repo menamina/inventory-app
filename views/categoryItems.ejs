@@ -9,7 +9,7 @@
         ><div><%= product.name %></div></a
       >
       <div>
-        <form action="products/<%product.id%>/delete" method="POST">
+        <form action="products/<%= product.id%>/delete" method="POST">
           <button type="submit">delete</button>
       </div>
 
