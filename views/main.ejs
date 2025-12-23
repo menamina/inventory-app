@@ -11,7 +11,9 @@
       >
       <div>
         <a href="/<%= category.id%>/edit">update</a>
-        <a href="/<%= category.id %>/delete">delete</a>
+        <form action="/categories/<%=category.id%>/delete" method="POST">
+          <button type="submit">delete</button>
+        </form>
       </div>
 
       <%})%> <% } %>

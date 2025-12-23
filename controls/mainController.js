@@ -61,7 +61,7 @@ function getDeleteCategory() {
 
 async function deleteCategory(req, res) {
   const id = req.params.id;
-  await db.deleteCategoryq(id);
+  await db.deleteCategory(id);
   res.redirect("/");
 }
 
@@ -86,7 +86,7 @@ async function postCreatedProduct(req, res) {
 }
 
 async function getUpdateProduct(req, res) {
-  const product = await db.getProductByID(req.params.id);
+  const product = await db.getProductById(req.params.id);
   res.render("updateProduct", {
     product,
   });
