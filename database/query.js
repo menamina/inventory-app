@@ -7,14 +7,15 @@ async function getAllCategories() {
   return rows;
 }
 
-async function getCategory() {
+async function getProductsByCategory(catID) {
   const { rows } = await pool.query(
     "SELECT * FROM products WHERE category_id = $1",
-    []
+    [catID]
   );
   return rows;
 }
 
 module.exports = {
   getAllCategories,
+  getProductsByCategory,
 };
