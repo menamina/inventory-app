@@ -1,18 +1,26 @@
 const db = require("../database/query");
 
 async function getAllCategories(req, res) {
-  const categories = await db.getAllCategories();
-  res.render("main", {
-    categories,
-  });
+  try {
+    const categories = await db.getAllCategories();
+    res.render("main", {
+      categories,
+    });
+  } catch (error) {
+    res.status(500).send("Error fetching categories");
+  }
 }
 
 async function getSelectedCategory(req, res) {
-  const catID = req.params.id;
-  const products = await db.getProductsByCategory(catID);
-  res.render("categoryItems", {
-    products,
-  });
+  try {
+    const catID = req.params.id;
+    const products = await db.getProductsByCategory(catID);
+    res.render("categoryItems", {
+      products,
+    });
+  } catch (error) {
+    res.status(500).send("Error fetching products");
+  }
 }
 
 // CAT METHODS
@@ -36,10 +44,17 @@ async function postCreatedCategory(req, res) {
 }
 
 async function getUpdateCategory(req, res) {
-  const category = await db.getCategoryById(req.params.id);
-  res.render("updateCategory", {
-    category,
-  });
+  try {
+    const category = await db.getCategoryById(req.params.id);
+    if (!category) {
+      return res.status(404).send("Category not found");
+    }
+    res.render("updateCategory", {
+      category,
+    });
+  } catch (error) {
+    res.status(500).send("Error fetching category");
+  }
 }
 
 async function postUpdateCategory(req, res) {
@@ -50,15 +65,19 @@ async function postUpdateCategory(req, res) {
     res.redirect("/");
   } catch (err) {
     if (err) {
-      res.render("updateCategory", { error: err });
+      return res.render("updateCategory", { error: err });
     }
   }
 }
 
 async function deleteCategory(req, res) {
-  const id = req.params.id;
-  await db.deleteCategory(id);
-  res.redirect("/");
+  try {
+    const id = req.params.id;
+    await db.deleteCategory(id);
+    res.redirect("/");
+  } catch (error) {
+    res.status(500).send("Error deleting category");
+  }
 }
 
 // PROD METHODS
@@ -68,9 +87,9 @@ function getCreateProduct(req, res) {
 }
 
 async function postCreatedProduct(req, res) {
-  const { name, price, brand, category } = req.body;
+  const { name, price, brand_id, category_id } = req.body;
   try {
-    await db.postProduct(name, price, brand, category);
+    await db.postProduct(name, price, brand_id, category_id);
     res.redirect("/");
   } catch (error) {
     if (error) {
@@ -82,29 +101,40 @@ async function postCreatedProduct(req, res) {
 }
 
 async function getUpdateProduct(req, res) {
-  const product = await db.getProductById(req.params.id);
-  res.render("updateProduct", {
-    product,
-  });
+  try {
+    const product = await db.getProductById(req.params.id);
+    if (!product) {
+      return res.status(404).send("Product not found");
+    }
+    res.render("updateProduct", {
+      product,
+    });
+  } catch (error) {
+    res.status(500).send("Error fetching product");
+  }
 }
 
 async function postUpdateProduct(req, res) {
   const id = req.params.id;
-  const { name, price, brand, category } = req.body;
+  const { name, price, brand_id, category_id } = req.body;
 
   try {
-    await db.updateProduct(name, price, brand, category, id);
+    await db.updateProduct(name, price, brand_id, category_id, id);
     res.redirect("/");
   } catch (err) {
     if (err) {
-      res.render("updateProduct", { error: err });
+      return res.render("updateProduct", { error: err });
     }
   }
 }
 
 async function deleteProduct(req, res) {
-  await db.deleteProduct(req.params.id);
-  res.redirect("/");
+  try {
+    await db.deleteProduct(req.params.id);
+    res.redirect("/");
+  } catch (error) {
+    res.status(500).send("Error deleting product");
+  }
 }
 
 // exports

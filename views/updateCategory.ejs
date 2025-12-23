@@ -1,6 +1,6 @@
 <html>
   <body>
-    <form action="/categories/:id/edit" method="POST">
+    <form action="/categories/<%= category.id %>/edit" method="POST">
       <% if (error) { %>
       <p>Whoops! <%= error %></p>
       <% }%>

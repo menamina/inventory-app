@@ -3,14 +3,15 @@
     <div>
       <% if (products.length === 0) { %>
       <p>No products yet</p>
-      <a href="/products/newProduct"><p>add a product to <%= product %></p></a>
+      <a href="/products/newProduct"><p>add a product</p></a>
       <%} else { %> <% products.forEach(product => { %>
       <a href="/products/<%= product.id%>/edit"
         ><div><%= product.name %></div></a
       >
       <div>
-        <form action="products/<%= product.id%>/delete" method="POST">
+        <form action="/products/<%= product.id%>/delete" method="POST">
           <button type="submit">delete</button>
+        </form>
       </div>
 
       <%})%> <% } %>

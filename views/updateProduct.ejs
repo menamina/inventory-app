@@ -1,17 +1,18 @@
 <html>
   <body>
-    <form action="/products/:id/edit" method="POST">
+    <form action="/products/<%= product.id %>/edit" method="POST">
       <% if (error) { %>
       <p>Whoops! <%=error%></p>
       <% }%>
       <label>Product:</label>
       <input name="name" value="<%= product.name %>" />
       <label for="price">Price:</label>
-      <input name="price" id="price" value-="<% product.price%>" />
+      <input name="price" id="price" value="<%= product.price%>" />
       <label>Brand:</label>
-      <input name="brand" value="<%= product.category_id %>" />
+      <input name="brand_id" value="<%= product.brand_id %>" />
       <label>Category:</label>
-      <input name="category" value="<%= product.category_id %>" />
+      <input name="category_id" value="<%= product.category_id %>" />
+      <button>submit</button>
     </form>
   </body>
 </html>
