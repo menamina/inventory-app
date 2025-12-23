@@ -4,9 +4,15 @@
     <div>
       <% if (categories.length === 0) { %>
       <p>No categories yet</p>
+      <p>create a category</p>
       <%} else { %> <% categories.forEach(category => { %>
-      <div><%= category.category %></div>
-      <%})%> <% } %>
+      <a href="/categories/<%= category.id%>"
+        ><div><%= category.category %></div></a
+      >
+
+      <%})%>
+      <p>create a category</p>
+      <% } %>
     </div>
   </body>
 </html>
