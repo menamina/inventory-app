@@ -6,14 +6,16 @@ const path = require("node:path");
 const port = process.env.PORT || 5555;
 
 const mainRoute = require("./routes/mainRoute");
-const categoryRoute = require("../routes/categoryIdRoute");
+const categoryRoutes = require("../routes/categoryRoute");
+const productRoutes = require("../routes/productRoute");
 
 server.use(express.urlencoded({ extended: true }));
 server.set("view engine", "ejs");
 server.set("views", path.join(__dirname, "views"));
 
 server.use("/", mainRoute);
-server.use("/categories", categoryRoute);
+server.use("/categories", categoryRoutes);
+server.use("/products", productRoutes);
 
 server.listen(port, (error) => {
   if (error) {

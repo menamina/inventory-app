@@ -1,7 +1,7 @@
 const db = require("../database/query");
 
 async function getAllCategories(req, res) {
-  const categories = await db.getAllCategories;
+  const categories = await db.getAllCategories();
   res.render("main", {
     categories,
   });
@@ -36,7 +36,10 @@ async function postCreatedCategory(req, res) {
 }
 
 function getUpdateCategory(req, res) {
-  res.render("updateCategory");
+  const category = await db.getCategoryById(req.params.id);
+  res.render("updateCategory", {
+    category
+  });
 }
 
 async function postUpdateCategory(req, res) {}

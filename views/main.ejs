@@ -4,18 +4,18 @@
     <div>
       <% if (categories.length === 0) { %>
       <p>No categories yet</p>
-      <a href="/createCategory"><p>create a category</p></a>
+      <a href="/newCategory"><p>create a category</p></a>
       <%} else { %> <% categories.forEach(category => { %>
       <a href="/categories/<%= category.id%>"
         ><div><%= category.category %></div></a
       >
       <div>
-        <a href="/updateCategory/<%= category.id%>">update</a>
-        <a href="/deleteCategory/<%= category.id %>">delete</a>
+        <a href="/<%= category.id%>/edit">update</a>
+        <a href="/<%= category.id %>/delete">delete</a>
       </div>
 
       <%})%> <% } %>
-      <a href="/createCategory"><p>create a category</p></a>
+      <a href="/newCategory"><p>create a category</p></a>
     </div>
   </body>
 </html>
