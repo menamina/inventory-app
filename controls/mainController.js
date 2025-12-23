@@ -43,14 +43,27 @@ async function getUpdateCategory(req, res) {
 }
 
 async function postUpdateCategory(req, res) {
+  const id = req.params.id;
   const categoryName = req.body.category;
+  try {
+    await db.updateCategory(categoryName, id);
+    res.redirect("/");
+  } catch (err) {
+    if (err) {
+      res.render("updateCategory", { error: err });
+    }
+  }
 }
 
 function getDeleteCategory() {
   res.render("deleteCategory");
 }
 
-async function deleteCategory(req, res) {}
+async function deleteCategory(req, res) {
+  const id = req.params.id;
+  await db.deleteCategoryq(id);
+  res.redirect("/");
+}
 
 // PROD METHODS
 
