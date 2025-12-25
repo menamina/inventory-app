@@ -26,7 +26,9 @@ async function getSelectedCategory(req, res) {
 // CAT METHODS
 
 function getCreateCategory(req, res) {
-  res.render("createCategory");
+  res.render("createCategory", {
+    error: null,
+  });
 }
 
 async function postCreatedCategory(req, res) {
@@ -98,9 +100,9 @@ function getCreateProduct(req, res) {
 }
 
 async function postCreatedProduct(req, res) {
-  const { name, price, brand_id, category_id } = req.body;
+  const { name, price, brand_id, categories_id } = req.body;
   try {
-    await db.postProduct(name, price, brand_id, category_id);
+    await db.postProduct(name, price, brand_id, categories_id);
     res.redirect("/");
   } catch (error) {
     if (error) {
