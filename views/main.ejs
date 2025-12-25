@@ -1,17 +1,25 @@
 <html>
+  <head>
+    <title>Cakeface Inventory</title>
+    <link rel="stylesheet" href="/main.css" />
+  </head>
   <body>
-    <h2>Cakeface. Inventory</h2>
-    <div>
+    <div class="title">Cakeface. Inventory</div>
+    <div class="categoryHomeDiv">
       <% if (categories.length === 0) { %>
       <p>No categories yet</p>
       <a href="/categories/newCategory"><p>create a category</p></a>
       <%} else { %> <% categories.forEach(category => { %>
-      <a href="/categories/<%= category.id%>"> <%=category.category %></a>
-      <div>
-        <a href="/categories/<%= category.id%>/edit">update</a>
-        <form action="/categories/<%=category.id%>/delete" method="POST">
-          <button type="submit">delete</button>
-        </form>
+      <div class="catHolder">
+        <div class="catName">
+          <a href="/categories/<%= category.id%>"> <%=category.category %></a>
+        </div>
+        <div. class="buttons">
+          <a href="/categories/<%= category.id%>/edit">update</a>
+          <form action="/categories/<%=category.id%>/delete" method="POST">
+            <button type="submit">delete</button>
+          </form>
+        </div>
       </div>
       <%})%>
       <a href="/categories/newCategory"><p>create a category</p></a>
