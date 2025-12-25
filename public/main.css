@@ -1,6 +1,6 @@
 .catCard,
-.buttons,
 .catName,
+.buttons,
 .categoryHomeDiv {
   display: flex;
 }
@@ -39,6 +39,10 @@
   padding-right: 12px;
 }
 
+.form {
+  display: contents;
+}
+
 .catName {
   height: 80%;
   font-size: 2.5rem;
@@ -50,6 +54,7 @@
 .createCategoryDiv {
   margin-top: 100px;
   text-align: center;
+  font-size: 1.5rem;
 }
 
 .title {
@@ -69,4 +74,6 @@ a:visited {
 .dlt {
   border: none;
   background-color: white;
+  margin: 0;
+  padding: 0;
 }
