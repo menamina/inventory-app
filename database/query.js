@@ -87,11 +87,45 @@ async function getProductById(id) {
   return rows[0];
 }
 
-async function updateProduct(name, price, brand_id, categories_id, id) {
-  await pool.query(
-    "UPDATE products SET name  = $1, price = $2, brand_id = $3, categories_id = $4 WHERE id = $5",
-    [name, price, brand_id, categories_id, id]
+async function updateProduct(name, price, brand, category, id) {
+  let brandID;
+  let catID;
+
+  const brandRow = await pool.query(
+    "SELECT id FROM brands WHERE brands.brand = $1",
+    [brand]
   );
+  if (brandRow.rows.length === 0) {
+    const createBrand = await pool.query(
+      "INSERT INTO brands (brand) VALUES ($1) RETURNING id ",
+      [brand]
+    );
+    brandID = createBrand.rows[0].id;
+  } else {
+    brandID = brandRow.rows[0].id;
+  }
+  const catRow = await pool.query(
+    "SELECT id FROM categories WHERE categories.category = $1",
+    [category]
+  );
+  if (catRow.rows.length === 0) {
+    const createCat = await pool.query(
+      "INSERT INTO categories (category) VALUES ($1) RETURNING id",
+      [category]
+    );
+    catID = createCat.rows[0].id;
+  } else {
+    catID = catRow.rows[0].id;
+  }
+
+  try {
+    await pool.query(
+      "UPDATE products SET name  = $1, price = $2, brand_id = $3, categories_id = $4 WHERE id = $5",
+      [name, price, brandID, catID, id]
+    );
+  } catch (error) {
+    throw error;
+  }
 }
 
 async function deleteProduct(id) {

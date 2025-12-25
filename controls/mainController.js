@@ -139,10 +139,10 @@ async function getUpdateProduct(req, res) {
 
 async function postUpdateProduct(req, res) {
   const id = req.params.id;
-  const { name, price, brand_id, category_id } = req.body;
+  const { name, price, brand, category } = req.body;
 
   try {
-    await db.updateProduct(name, price, brand_id, category_id, id);
+    await db.updateProduct(name, price, brand, category, id);
     res.redirect("/");
   } catch (err) {
     if (err) {
