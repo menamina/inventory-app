@@ -63,7 +63,7 @@ async function getUpdateCategory(req, res) {
     }
   } catch (error) {
     return res.render("updateCategory", {
-      error,
+      erro: error.message,
       message: null,
       category: null,
     });
@@ -105,11 +105,9 @@ async function postCreatedProduct(req, res) {
     await db.postProduct(name, price, brandName, categoryName);
     res.redirect("/");
   } catch (error) {
-    if (error) {
-      return res.render("createProduct", {
-        error,
-      });
-    }
+    return res.render("createProduct", {
+      error: error.message,
+    });
   }
 }
 
@@ -117,7 +115,7 @@ async function getUpdateProduct(req, res) {
   try {
     const product = await db.getProductById(req.params.id);
     if (!product) {
-      res.render("updateProduct", {
+      return res.render("updateProduct", {
         message: "There is no product",
         error: null,
         category: null,
@@ -130,7 +128,7 @@ async function getUpdateProduct(req, res) {
     });
   } catch (error) {
     res.render("updateProduct", {
-      error,
+      error: error.message,
       message: null,
       category: null,
     });
