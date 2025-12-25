@@ -10,9 +10,13 @@
   flex-direction: column;
 }
 
+.categoryHomeDiv {
+  align-items: center;
+}
+
 .categoryMainGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 250px);
   grid-auto-rows: 250px;
   margin-left: 25px;
   margin-right: 25px;
@@ -31,6 +35,8 @@
   height: 20%;
   align-items: center;
   justify-content: space-between;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 .catName {
@@ -58,4 +64,9 @@ a,
 a:visited {
   text-decoration: none;
   color: black;
+}
+
+.dlt {
+  border: none;
+  background-color: white;
 }

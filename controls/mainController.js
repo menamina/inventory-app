@@ -2,7 +2,10 @@ const db = require("../database/query");
 
 async function getAllCategories(req, res) {
   try {
-    const categories = await db.getAllCategories();
+    const nonSort = await db.getAllCategories();
+    const categories = nonSort.sort((a, b) =>
+      a.category.localeCompare(b.category)
+    );
     res.render("main", {
       categories,
     });
