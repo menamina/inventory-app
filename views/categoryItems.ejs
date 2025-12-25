@@ -1,11 +1,16 @@
 <html>
+  <head>
+    <link rel="stylesheet" href="/categoryProducts.css" />
+  </head>
   <body>
     <div>
       <% if (products.length === 0) { %>
-      <p>No products yet</p>
-      <a href="/products/newProduct"><p>add a product</p></a>
+      <div class="noProds">
+        <h1>No products yet</h1>
+        <a class="link" href="/products/newProduct"><p>add a product</p></a>
+      </div>
       <%} else { %> <% products.forEach(product => { %>
-      <a href="/products/<%= product.id%>/edit"
+      <a class="link" href="/products/<%= product.id%>/edit"
         ><div><%= product.name %></div></a
       >
       <div>

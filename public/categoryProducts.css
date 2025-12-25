@@ -1,0 +1,17 @@
+.noProds {
+  display: flex;
+}
+
+.noProds {
+  flex-direction: column;
+}
+
+.noProds {
+  align-items: center;
+}
+
+a,
+a:visited {
+  text-decoration: none;
+  color: black;
+}
