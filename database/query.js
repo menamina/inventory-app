@@ -37,20 +37,39 @@ async function postCategory(category) {
   await pool.query("INSERT INTO categories (category) VALUES ($1)", [category]);
 }
 async function postProduct(name, price, brandName, categoryName) {
-  const brandIDArr = await pool.query(
-    "SELECT id FROM brands WHERE brand = $1",
+  let brandID;
+  let catID;
+
+  const brandObj = await pool.query(
+    "SELECT id FROM brands WHERE brand = ($1)",
     [brandName]
   );
-  const brandID = brandIDArr.rows[0].id;
-  const catIDArr = await pool.query(
-    "SELECT id FROM categories WHERE category = $1",
+  if (brandObj.rows[0].length === 0) {
+    brandID = brandObj.rows[0].id;
+  } else {
+    brandID = brandObj.rows[0].id;
+  }
+
+  const catObj = await pool.query(
+    "SELECT id FROM categories WHERE category = ($1)",
     [categoryName]
   );
-  const catID = catIDArr.rows[0].id;
-  await pool.query(
-    "INSERT INTO products (name, price, brand_id, categories_id) VALUES ($1, $2, $3, $4)",
-    [name, price, brandID, catID]
-  );
+  if (catObj.rows[0].length === 0) {
+    catID = catObj.rows[0].id;
+  } else {
+    catID = catObj.rows[0].id;
+  }
+
+  try {
+    await pool.query(
+      "INSERT INTO products (name, price, brand_id, categories_id) VALUES ($1, $2, $3, $4)",
+      [name, price, brandID, catID]
+    );
+  } catch (err) {
+    if (err) {
+      throw new Error(err);
+    }
+  }
 }
 
 async function getProductById(id) {
