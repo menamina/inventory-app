@@ -81,7 +81,7 @@ async function postProduct(name, price, brandName, categoryName) {
 
 async function getProductById(id) {
   const { rows } = await pool.query(
-    "SELECT products.name, products.price, brands.brand, categories.category FROM products LEFT JOIN brands ON products.brand_id = brands.id LEFT JOIN categories ON products.categories_id = categories.id WHERE products.id = $1",
+    "SELECT products.id, products.name, products.price, brands.brand, categories.category FROM products LEFT JOIN brands ON products.brand_id = brands.id LEFT JOIN categories ON products.categories_id = categories.id WHERE products.id = $1",
     [id]
   );
   return rows[0];
