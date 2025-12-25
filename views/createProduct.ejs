@@ -6,25 +6,26 @@
     <div class="newProd">
       <form class="form" action="/products/newProduct" method="POST">
         <% if (error) { %>
-        <h2><%= error %></h2>
+        <h2 class="title"><%= error %></h2>
         <% } %>
+        <h2 class="title">Enter product details</h2>
         <div class="label-input">
           <label for="product">Product:</label>
-          <input name="name" id="name" />
+          <input name="name" id="name" required />
         </div>
         <div class="label-input">
           <label for="product">Price:</label>
-          <input name="price" id="price" />
+          <input name="price" id="price" required />
         </div>
         <div class="label-input">
           <label for="product">Brand:</label>
-          <input name="brandName" id="brand" />
+          <input name="brandName" id="brand" required />
         </div>
         <div class="label-input">
           <label for="category">Category:</label>
-          <input name="categoryName" id="category" />
+          <input name="categoryName" id="category" required />
         </div>
-        <button>submit</button>
+        <button class="btn">submit</button>
       </form>
     </div>
   </body>
