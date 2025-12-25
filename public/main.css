@@ -1,10 +1,12 @@
 .catCard,
 .buttons,
-.catName {
+.catName,
+.categoryHomeDiv {
   display: flex;
 }
 
-.catCard {
+.catCard,
+.categoryHomeDiv {
   flex-direction: column;
 }
 
@@ -19,6 +21,8 @@
 
 .catCard {
   height: 100%;
+  border: 1px solid gray;
+  border-radius: 4%;
 }
 
 .buttons {
@@ -32,6 +36,7 @@
   font-size: 2.5rem;
   align-items: center;
   justify-content: center;
+  border-bottom: 1px solid gray;
 }
 
 .title {

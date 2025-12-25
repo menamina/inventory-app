@@ -14,18 +14,26 @@
         <% categories.forEach(category => { %>
         <div class="catCard">
           <div class="catName">
-          <a href="/categories/<%= category.id%>"> <%=category.category %></a>
+            <a href="/categories/<%= category.id%>">
+              <%=category.category %>
+            </a>
+          </div>
+          <div class="buttons">
+            <a href="/categories/<%= category.id%>/edit">update</a>
+            <form
+              class="form"
+              action="/categories/<%=category.id%>/delete"
+              method="POST"
+            >
+              <button type="submit">delete</button>
+            </form>
+          </div>
         </div>
-        <div class="buttons">
-          <a href="/categories/<%= category.id%>/edit">update</a>
-          <form action="/categories/<%=category.id%>/delete" method="POST">
-            <button type="submit">delete</button>
-          </form>
-        </div>
+        <%})%>
       </div>
-      <%})%>
-      <div class="create"><a href="/categories/newCategory">create a category</a></div>
-
+      <div class="createCategoryDiv">
+        <a href="/categories/newCategory">create a category</a>
+      </div>
       <% } %>
     </div>
   </body>
