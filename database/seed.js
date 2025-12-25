@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS products (
   name VARCHAR(255) NOT NULL,
   price NUMERIC(10,2),
   brand_id INTEGER NOT NULL,
-  category_id INTEGER NOT NULL
+  categories_id INTEGER NOT NULL
 );
 
 INSERT INTO brands (brand)
@@ -28,7 +28,7 @@ INSERT INTO categories (category)
 VALUES ('Blush'), ('Bronzer'), ('Base'), ('Palette')
 ON CONFLICT (category) DO NOTHING;
 
-INSERT INTO products (name, price, brand_id, category_id)
+INSERT INTO products (name, price, brand_id, categories_id)
 VALUES
   ('Infallible concealer', 15.99, 1, 3),
   ('Contour palette', 6.99, 2, 4),
