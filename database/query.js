@@ -44,8 +44,12 @@ async function postProduct(name, price, brandName, categoryName) {
     "SELECT id FROM brands WHERE brand = ($1)",
     [brandName]
   );
-  if (brandObj.rows[0].length === 0) {
-    brandID = brandObj.rows[0].id;
+  if (brandObj.rows.length === 0) {
+    const createBrand = await pool.query(
+      "INSERT INTO brands (brand) VALUES ($1) RETURNING ID",
+      [brandName]
+    );
+    brandID = createBrand.rows[0].id;
   } else {
     brandID = brandObj.rows[0].id;
   }
@@ -54,8 +58,12 @@ async function postProduct(name, price, brandName, categoryName) {
     "SELECT id FROM categories WHERE category = ($1)",
     [categoryName]
   );
-  if (catObj.rows[0].length === 0) {
-    catID = catObj.rows[0].id;
+  if (catObj.rows.length === 0) {
+    const createCat = await pool.query(
+      "INSERT INTO categories (category) VALUES ($1) RETURNING ID",
+      [categoryName]
+    );
+    catID = createCat.rows[0].id;
   } else {
     catID = catObj.rows[0].id;
   }
