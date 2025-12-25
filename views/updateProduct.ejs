@@ -1,7 +1,9 @@
 <html>
   <body>
     <form action="/products/<%= product.id %>/edit" method="POST">
-      <% if (error) { %>
+      <% if (message) { %>
+      <p>Whoops! <%=message%></p>
+      <% }%> <% if (error) { %>
       <p>Whoops! <%=error%></p>
       <% }%>
       <label>Product:</label>

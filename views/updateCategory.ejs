@@ -1,8 +1,10 @@
 <html>
   <body>
     <form action="/categories/<%= category.id %>/edit" method="POST">
-      <% if (error) { %>
-      <p>Whoops! <%= error %></p>
+      <% if (message) { %>
+      <p>Whoops! <%=message%></p>
+      <% }%> <% if (error) { %>
+      <p>Whoops! <%=error%></p>
       <% }%>
       <label>Category</label>
       <input name="category" value="<%= category.category %>" />

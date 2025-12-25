@@ -47,13 +47,24 @@ async function getUpdateCategory(req, res) {
   try {
     const category = await db.getCategoryById(req.params.id);
     if (!category) {
-      return res.status(404).send("Category not found");
+      return res.render("updateCategory", {
+        message: "category not found",
+        error: null,
+        category: null,
+      });
+    } else {
+      return res.render("updateCategory", {
+        category,
+        message: null,
+        error: null,
+      });
     }
-    res.render("updateCategory", {
-      category,
-    });
   } catch (error) {
-    res.status(500).send("Error fetching category");
+    return res.render("updateCategory", {
+      error,
+      message: null,
+      category: null,
+    });
   }
 }
 
@@ -104,13 +115,23 @@ async function getUpdateProduct(req, res) {
   try {
     const product = await db.getProductById(req.params.id);
     if (!product) {
-      return res.status(404).send("Product not found");
+      res.render("updateProduct", {
+        message: "There is no product",
+        error: null,
+        category: null,
+      });
     }
     res.render("updateProduct", {
       product,
+      message: null,
+      error: null,
     });
   } catch (error) {
-    res.status(500).send("Error fetching product");
+    res.render("updateProduct", {
+      error,
+      message: null,
+      category: null,
+    });
   }
 }
 
