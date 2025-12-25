@@ -9,18 +9,18 @@
         <h1>No products yet</h1>
         <a class="link" href="/products/newProduct"><p>add a product</p></a>
       </div>
-      <%} else { %> <% products.forEach(product => { %>
-      <a class="link" href="/products/<%= product.id%>/edit"
-        ><div><%= product.name %></div></a
-      >
-      <div>
-        <form action="/products/<%= product.id%>/delete" method="POST">
-          <button type="submit">delete</button>
-        </form>
+      <% } else { %>
+      <div class="inventoryParentGrid">
+        <div>create a product</div>
+        <% products.forEach(product => { %>
+        <div class="productGrid">
+          <div class="name"><%= product.name %></div>
+          <div class="brand"><%= product.brand %></div>
+          <div class="category"><%= product.category %></div>
+          <div class="price"><%= product.price %></div>
+        </div>
+        <% }) %>
       </div>
-
-      <%})%>
-      <a href="/products/newProduct"><p>create a product</p></a>
       <% } %>
     </div>
   </body>
