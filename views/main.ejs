@@ -9,12 +9,14 @@
       <% if (categories.length === 0) { %>
       <p>No categories yet</p>
       <a href="/categories/newCategory"><p>create a category</p></a>
-      <%} else { %> <% categories.forEach(category => { %>
-      <div class="catHolder">
-        <div class="catName">
+      <%} else { %>
+      <div class="categoryMainGrid">
+        <% categories.forEach(category => { %>
+        <div class="catCard">
+          <div class="catName">
           <a href="/categories/<%= category.id%>"> <%=category.category %></a>
         </div>
-        <div. class="buttons">
+        <div class="buttons">
           <a href="/categories/<%= category.id%>/edit">update</a>
           <form action="/categories/<%=category.id%>/delete" method="POST">
             <button type="submit">delete</button>
@@ -22,7 +24,7 @@
         </div>
       </div>
       <%})%>
-      <a href="/categories/newCategory"><p>create a category</p></a>
+      <div class="create"><a href="/categories/newCategory">create a category</a></div>
 
       <% } %>
     </div>

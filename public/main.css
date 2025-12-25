@@ -1,15 +1,43 @@
-.categoryHomeDiv {
-  display: grid;
+.catCard,
+.buttons,
+.catName {
+  display: flex;
 }
 
-.categoryHomeDiv {
+.catCard {
+  flex-direction: column;
+}
+
+.categoryMainGrid {
+  display: grid;
   grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 200px;
+  gap: 25px;
+  margin-left: 25px;
+  margin-right: 25px;
+}
+
+.catCard {
+  height: 100%;
+}
+
+.buttons {
+  height: 20%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.catName {
+  height: 80%;
+  font-size: 2.5rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .title {
   display: flex;
   justify-self: center;
-  font-size: 2.5rem;
+  font-size: 3rem;
   padding-top: 30px;
   padding-bottom: 30px;
 }
