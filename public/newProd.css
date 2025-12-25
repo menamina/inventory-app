@@ -1,0 +1,28 @@
+.newProd,
+.form,
+.label-input {
+  display: flex;
+}
+
+.form {
+  flex-direction: column;
+}
+
+.newProd {
+  justify-content: center;
+  align-content: center;
+}
+
+.newProd {
+  height: 100vh;
+}
+
+.label-input {
+  justify-content: space-between;
+  gap: 30px;
+}
+
+.label-input label {
+  text-align: right;
+  width: 100%;
+}

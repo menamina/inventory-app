@@ -1,18 +1,31 @@
 <html>
+  <head>
+    <link rel="stylesheet" href="/newProd.css" />
+  </head>
   <body>
-    <form action="/products/newProduct" method="POST">
-      <% if (error) { %>
-      <h2><%= error %></h2>
-      <% } %>
-      <label for="product">Product:</label>
-      <input name="name" id="name" />
-      <label for="product">Price:</label>
-      <input name="price" id="price" />
-      <label for="product">Brand:</label>
-      <input name="brandName" id="brand" />
-      <label for="category">Category:</label>
-      <input name="categoryName" id="category" />
-      <button>submit</button>
-    </form>
+    <div class="newProd">
+      <form class="form" action="/products/newProduct" method="POST">
+        <% if (error) { %>
+        <h2><%= error %></h2>
+        <% } %>
+        <div class="label-input">
+          <label for="product">Product:</label>
+          <input name="name" id="name" />
+        </div>
+        <div class="label-input">
+          <label for="product">Price:</label>
+          <input name="price" id="price" />
+        </div>
+        <div class="label-input">
+          <label for="product">Brand:</label>
+          <input name="brandName" id="brand" />
+        </div>
+        <div class="label-input">
+          <label for="category">Category:</label>
+          <input name="categoryName" id="category" />
+        </div>
+        <button>submit</button>
+      </form>
+    </div>
   </body>
 </html>
