@@ -10,6 +10,10 @@
       <p>No categories yet</p>
       <a href="/categories/newCategory"><p>create a category</p></a>
       <%} else { %>
+      <div class="search-add">
+        <div class="search">search</div>
+        <a href="/categories/newCategory">create a category</a>
+      </div>
       <div class="categoryMainGrid">
         <% categories.forEach(category => { %>
         <div class="catCard">
@@ -30,9 +34,6 @@
           </div>
         </div>
         <%})%>
-      </div>
-      <div class="createCategoryDiv">
-        <a href="/categories/newCategory">create a category</a>
       </div>
       <% } %>
     </div>

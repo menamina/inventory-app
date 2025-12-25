@@ -1,7 +1,8 @@
 .catCard,
 .catName,
 .buttons,
-.categoryHomeDiv {
+.categoryHomeDiv,
+.search-add {
   display: flex;
 }
 
@@ -14,6 +15,11 @@
   align-items: center;
 }
 
+.categoryHomeDiv {
+  padding-bottom: 20px;
+  height: 100%;
+}
+
 .categoryMainGrid {
   display: grid;
   grid-template-columns: repeat(5, 250px);
@@ -22,6 +28,18 @@
   margin-right: 25px;
   justify-items: center;
   gap: 25px;
+}
+
+.search-add {
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  gap: 80px;
+}
+
+.search {
+  width: 300px;
+  text-align: center;
 }
 
 .catCard {
@@ -62,7 +80,7 @@
   justify-self: center;
   font-size: 3rem;
   padding-top: 50px;
-  padding-bottom: 100px;
+  padding-bottom: 50px;
 }
 
 a,

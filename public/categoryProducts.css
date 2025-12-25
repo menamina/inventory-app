@@ -1,3 +1,20 @@
+.inventoryParentGrid,
+.search-add {
+  display: flex;
+}
+
+.productGrid {
+  display: grid;
+}
+
+.inventoryParentGrid {
+  flex-direction: column;
+}
+
+.productGrid {
+  grid-template-columns: ;
+}
+
 .noProds {
   display: flex;
 }
