@@ -96,13 +96,13 @@ async function deleteCategory(req, res) {
 // PROD METHODS
 
 function getCreateProduct(req, res) {
-  res.render("createProduct");
+  res.render("createProduct", { error: null });
 }
 
 async function postCreatedProduct(req, res) {
-  const { name, price, brand_id, categories_id } = req.body;
+  const { name, price, brandName, categoryName } = req.body;
   try {
-    await db.postProduct(name, price, brand_id, categories_id);
+    await db.postProduct(name, price, brandName, categoryName);
     res.redirect("/");
   } catch (error) {
     if (error) {
