@@ -78,7 +78,7 @@ async function postUpdateCategory(req, res) {
     res.redirect("/");
   } catch (err) {
     if (err) {
-      return res.render("updateCategory", { error: err });
+      return res.render("updateCategory", { error: err.message });
     }
   }
 }
@@ -107,7 +107,7 @@ async function postCreatedProduct(req, res) {
   } catch (error) {
     if (error) {
       return res.render("createProduct", {
-        error: "This product already exists",
+        error,
       });
     }
   }

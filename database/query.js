@@ -36,6 +36,7 @@ async function getCategoryById(id) {
 async function postCategory(category) {
   await pool.query("INSERT INTO categories (category) VALUES ($1)", [category]);
 }
+
 async function postProduct(name, price, brandName, categoryName) {
   let brandID;
   let catID;
@@ -46,7 +47,7 @@ async function postProduct(name, price, brandName, categoryName) {
   );
   if (brandObj.rows.length === 0) {
     const createBrand = await pool.query(
-      "INSERT INTO brands (brand) VALUES ($1) RETURNING ID",
+      "INSERT INTO brands (brand) VALUES ($1) RETURNING id",
       [brandName]
     );
     brandID = createBrand.rows[0].id;
@@ -60,7 +61,7 @@ async function postProduct(name, price, brandName, categoryName) {
   );
   if (catObj.rows.length === 0) {
     const createCat = await pool.query(
-      "INSERT INTO categories (category) VALUES ($1) RETURNING ID",
+      "INSERT INTO categories (category) VALUES ($1) RETURNING id",
       [categoryName]
     );
     catID = createCat.rows[0].id;
@@ -74,16 +75,15 @@ async function postProduct(name, price, brandName, categoryName) {
       [name, price, brandID, catID]
     );
   } catch (err) {
-    if (err) {
-      throw new Error(err);
-    }
+    throw err;
   }
 }
 
 async function getProductById(id) {
-  const { rows } = await pool.query("SELECT * FROM products WHERE id = $1", [
-    id,
-  ]);
+  const { rows } = await pool.query(
+    "SELECT products.name, products.price, brands.brand, categories.category FROM products LEFT JOIN brands ON products.brand_id = brands.id LEFT JOIN categories ON products.categories_id = categories.id WHERE products.id = $1",
+    [id]
+  );
   return rows[0];
 }
 
