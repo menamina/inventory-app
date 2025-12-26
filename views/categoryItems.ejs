@@ -15,24 +15,36 @@
           <div>search</div>
           <div>add a product</div>
         </div>
-        <% products.forEach(product => { %>
-        <div class="productGrid">
-          <div class="name"><%= product.name %></div>
-          <div class="brand"><%= product.brand %></div>
-          <div class="category"><%= product.category %></div>
-          <div class="price"><%= product.price %></div>
-          <a class="edit">edit</a>
-          <form
-            class="form"
-            action="/products/<%=product.id%>/delete"
-            method="POST"
-          >
-            <button class="dlt" type="submit">delete</button>
-          </form>
-        </div>
-        <% }) %>
-      </div>
-      <% } %>
+          <table class="inventoruy-table">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Brand</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Quanitty</th>
+                <th>Options</th>
+              </tr>
+            </thead>
+
+            <tbody>
+                <% products.forEach(product => { %>
+                  <tr>
+                    <td><%= product.name %></td>
+                    <td><%= product.brand %></td>
+                    <td><%= product.category %></td>
+                    <td><%= product.price %></td>
+                  </tr>
+
+                  <td class="options">
+                    <a href="/products/<%=product.id%>/edit">edit</a>
+                    <form class="form" action="/produts/<%=product.id%>/delete">
+                      <button class="btn">delete</button>
+                    </form>
+                  </td>
+            </tbody>
+            <% }) %>
+          <% } %>
     </div>
   </body>
 </html>
