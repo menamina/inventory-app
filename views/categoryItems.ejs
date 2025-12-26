@@ -7,13 +7,13 @@
       <% if (products.length === 0) { %>
       <div class="noProds">
         <h1>No products yet</h1>
-        <a class="link" href="/products/newProduct"><p>add a product</p></a>
+        <a class="link" href="/products/newProduct">add a product</a>
       </div>
       <% } else { %>
       <div class="inventoryParentGrid">
         <div class="search-add">
           <div>search</div>
-          <div>add a product</div>
+          <a class="link" href="/products/newProduct"><p>add a product</p></a>
         </div>
           <table class="inventory-table">
             <thead>
@@ -33,12 +33,12 @@
                     <td><%= product.name %></td>
                     <td><%= product.brand %></td>
                     <td><%= product.category %></td>
-                    <td>quantity***</td>
                     <td>$<%= product.price %></td>
+                    <td>quantity***</td>
                     <td class="options">
                       <a href="/products/<%=product.id%>/edit">edit</a>
                       <form class="form" action="/produts/<%=product.id%>/delete">
-                        <button class="btn">delete</button>
+                        <button class="dlt">delete</button>
                       </form>
                     </td>
                   </tr>

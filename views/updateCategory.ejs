@@ -1,14 +1,23 @@
 <html>
+  <head>
+    <link rel="stylesheet" href="/update.css" />
+  </head>
   <body>
-    <form action="/categories/<%= category.id %>/edit" method="POST">
-      <% if (message) { %>
-      <p>Whoops! <%=message%></p>
-      <% }%> <% if (error) { %>
-      <p>Whoops! <%=error%></p>
-      <% }%>
-      <label>Category</label>
-      <input name="category" value="<%= category.category %>" />
-      <button>update</button>
-    </form>
+    <div class="updatePage">
+      <form class="form" action="/categories/<%= category.id %>/edit" method="POST">
+        <% if (message) { %>
+        <p>Whoops! <%= message %></p>
+        <% } %>
+        <% if (error) { %>
+        <p>Whoops! <%= error %></p>
+        <% } %>
+        <h2 class="title">Update category</h2>
+        <div class="label-input">
+          <label>Category:</label>
+          <input name="category" value="<%= category.category %>" />
+        </div>
+        <button class="btn">update</button>
+      </form>
+    </div>
   </body>
 </html>

@@ -1,20 +1,35 @@
 <html>
+  <head>
+    <link rel="stylesheet" href="/update.css" />
+  </head>
   <body>
-    <form action="/products/<%= product.id %>/edit" method="POST">
-      <% if (message) { %>
-      <p>Whoops! <%=message%></p>
-      <% }%> <% if (error) { %>
-      <p>Whoops! <%=error%></p>
-      <% }%>
-      <label>Product:</label>
-      <input name="name" value="<%= product.name %>" />
-      <label for="price">Price:</label>
-      <input name="price" id="price" value="<%= product.price%>" />
-      <label>Brand:</label>
-      <input name="brand" value="<%= product.brand %>" />
-      <label>Category:</label>
-      <input name="category" value="<%= product.category %>" />
-      <button>submit</button>
-    </form>
+    <div class="updatePage">
+      <form class="form" action="/products/<%= product.id %>/edit" method="POST">
+        <% if (message) { %>
+        <p>Whoops! <%= message %></p>
+        <% } %>
+        <% if (error) { %>
+        <p>Whoops! <%= error %></p>
+        <% } %>
+        <h2 class="title">Update product</h2>
+        <div class="label-input">
+          <label>Product:</label>
+          <input name="name" value="<%= product.name %>" />
+        </div>
+        <div class="label-input">
+          <label>Price:</label>
+          <input name="price" value="<%= product.price %>" />
+        </div>
+        <div class="label-input">
+          <label>Brand:</label>
+          <input name="brand" value="<%= product.brand %>" />
+        </div>
+        <div class="label-input">
+          <label>Category:</label>
+          <input name="category" value="<%= product.category %>" />
+        </div>
+        <button class="btn">submit</button>
+      </form>
+    </div>
   </body>
 </html>

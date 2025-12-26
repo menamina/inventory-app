@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.newProd,
+.updatePage,
 .form,
 .label-input {
   display: flex;
@@ -12,17 +12,14 @@
   flex-direction: column;
 }
 
-.newProd {
+.updatePage {
   justify-content: center;
   align-content: center;
+  height: 100vh;
 }
 
 .title {
   text-align: center;
-}
-
-.newProd {
-  height: 100vh;
 }
 
 .label-input {
