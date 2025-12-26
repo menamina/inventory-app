@@ -12,6 +12,20 @@
   height: 100%;
 }
 
+.inventory-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.inventory-table th,
+.inventory-table td {
+  border: 1px solid gray;
+}
+
+td {
+  text-align: center;
+}
+
 .noProds {
   display: flex;
 }

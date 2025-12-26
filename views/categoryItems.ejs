@@ -33,17 +33,17 @@
                     <td><%= product.name %></td>
                     <td><%= product.brand %></td>
                     <td><%= product.category %></td>
-                    <td><%= product.price %></td>
+                    <td>quantity***</td>
+                    <td>$<%= product.price %></td>
+                    <td class="options">
+                      <a href="/products/<%=product.id%>/edit">edit</a>
+                      <form class="form" action="/produts/<%=product.id%>/delete">
+                        <button class="btn">delete</button>
+                      </form>
+                    </td>
                   </tr>
-
-                  <td class="options">
-                    <a href="/products/<%=product.id%>/edit">edit</a>
-                    <form class="form" action="/produts/<%=product.id%>/delete">
-                      <button class="btn">delete</button>
-                    </form>
-                  </td>
-            </tbody>
             <% }) %>
+          </tbody>
           <% } %>
     </div>
   </body>
