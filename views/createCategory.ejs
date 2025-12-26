@@ -1,12 +1,20 @@
 <html>
+  <head>
+    <link rel="stylesheet" href="/newCategory.css" />
+  </head>
   <body>
-    <form action="/categories/newCategory" method="POST">
-      <% if (error) { %>
-      <h2><%= error %></h2>
-      <% } %>
-      <label for="category">Category:</label>
-      <input name="category" id="category" />
-      <button>create category</button>
-    </form>
+    <div class="newCategory">
+      <form class="form" action="/categories/newCategory" method="POST">
+        <% if (error) { %>
+        <h2><%= error %></h2>
+        <% } %>
+        <h2 class="title">Enter category details</h2>
+        <div class="label-input">
+          <label for="category">Category:</label>
+          <input name="category" id="category" />
+        </div>
+        <button class="btn">create category</button>
+      </form>
+    </div>
   </body>
 </html>

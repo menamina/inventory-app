@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+.newCategory,
+.form,
+.label-input {
+  display: flex;
+}
+
+.form {
+  flex-direction: column;
+}
+
+.newCategory {
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+}
+
+.title {
+  text-align: center;
+}
+
+.label-input {
+  justify-content: space-between;
+  margin-bottom: 10px;
+  width: 100%;
+  gap: 30px;
+}
+
+.label-input label {
+  text-align: right;
+  width: 100%;
+}
+
+.btn {
+  border: none;
+  background-color: rgb(103, 100, 100);
+  color: white;
+  width: 100px;
+  border-radius: 5px;
+  align-self: center;
+}

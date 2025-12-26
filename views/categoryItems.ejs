@@ -22,7 +22,7 @@
                 <th>Brand</th>
                 <th>Category</th>
                 <th>Price</th>
-                <th>Quanitty</th>
+                <th>Quanity</th>
                 <th>Options</th>
               </tr>
             </thead>
@@ -37,13 +37,14 @@
                     <td>quantity***</td>
                     <td class="options">
                       <a href="/products/<%=product.id%>/edit">edit</a>
-                      <form class="form" action="/produts/<%=product.id%>/delete">
+                      <form class="form" action="/products/<%=product.id%>/delete" method="POST">
                         <button class="dlt">delete</button>
                       </form>
                     </td>
                   </tr>
-            <% }) %>
-          </tbody>
+              <% }) %>
+            </tbody>
+          </table>
           <% } %>
     </div>
   </body>
