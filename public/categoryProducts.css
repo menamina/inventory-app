@@ -3,10 +3,6 @@
   display: flex;
 }
 
-.productGrid {
-  display: grid;
-}
-
 .inventoryParentGrid {
   flex-direction: column;
 }
@@ -14,12 +10,6 @@
 .inventoryParentGrid {
   width: 100%;
   height: 100%;
-}
-
-.productGrid {
-  grid-template-columns: repeat(6, auto);
-  align-items: center;
-  text-align: center;
 }
 
 .noProds {

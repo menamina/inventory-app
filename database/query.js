@@ -9,7 +9,7 @@ async function getAllCategories() {
 
 async function getProductsByCategory(catID) {
   const { rows } = await pool.query(
-    "SELECT * FROM products WHERE categories_id = $1",
+    "SELECT products.id, products.name, products.price, brands.brand, categories.category FROM products LEFT JOIN brands ON products.brand_id = brands.id LEFT JOIN categories ON products.categories_id = categories.id WHERE products.categories_id = $1",
     [catID]
   );
   return rows;
