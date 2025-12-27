@@ -19,6 +19,7 @@ async function getSelectedCategory(req, res) {
   try {
     const products = await db.getProductsByCategory(catName);
     res.render("categoryItems", {
+      catName,
       products,
     });
   } catch (error) {
@@ -99,23 +100,27 @@ async function deleteCategory(req, res) {
 // PROD METHODS
 
 function getCreateProduct(req, res) {
-  res.render("createProduct", { error: null });
+  const category = req.query.category || "";
+  res.render("createProduct", { error: null, category });
 }
 
 async function postCreatedProduct(req, res) {
   const { name, price, brandName, categoryName, quantity } = req.body;
   try {
-    const savedCategoryName = await db.postProduct(
+    const newProd = await db.postProduct(
       name,
       price,
       brandName,
       categoryName,
       quantity
     );
-    res.redirect(`/categories/${savedCategoryName}`);
+    res.redirect(`/categories/${newProd}`, {
+      newProd,
+    });
   } catch (error) {
     return res.render("createProduct", {
       error: error.message,
+      category: categoryName,
     });
   }
 }
@@ -149,14 +154,7 @@ async function postUpdateProduct(req, res) {
   const { name, price, brand, category, quantity } = req.body;
 
   try {
-    await db.updateProduct(
-      name,
-      price,
-      brand,
-      category,
-      quantity,
-      currentName
-    );
+    await db.updateProduct(name, price, brand, category, quantity, currentName);
     res.redirect(`/categories/${category}`);
   } catch (err) {
     if (err) {

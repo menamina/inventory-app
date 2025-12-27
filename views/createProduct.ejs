@@ -20,7 +20,12 @@
         </div>
         <div class="label-input">
           <label for="category">Category:</label>
-          <input name="categoryName" id="category" required />
+          <input
+            name="categoryName"
+            id="category"
+            value="<%= category || '' %>"
+            required
+          />
         </div>
         <div class="label-input">
           <label for="product">Price:</label>

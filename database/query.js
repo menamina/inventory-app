@@ -30,7 +30,6 @@ async function deleteCategory(categoryName) {
     );
     if (rows.length === 0) return;
     const categoryId = rows[0].id;
-    // Remove products first to satisfy potential FK constraints, then delete the category
     await pool.query("DELETE FROM products WHERE categories_id = $1", [
       categoryId,
     ]);
