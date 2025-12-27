@@ -80,6 +80,7 @@ async function postProduct(name, price, brandName, categoryName, quantity) {
       "INSERT INTO products (name, price, brand_id, categories_id, quantity) VALUES ($1, $2, $3, $4, $5)",
       [name, price, brandID, catID, quantity]
     );
+    return catID;
   } catch (err) {
     throw err;
   }

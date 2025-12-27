@@ -105,8 +105,14 @@ function getCreateProduct(req, res) {
 async function postCreatedProduct(req, res) {
   const { name, price, brandName, categoryName, quantity } = req.body;
   try {
-    await db.postProduct(name, price, brandName, categoryName, quantity);
-    res.redirect("/categoriesh65                                      ");
+    const categoryId = await db.postProduct(
+      name,
+      price,
+      brandName,
+      categoryName,
+      quantity
+    );
+    res.redirect(`/categories/${categoryId}`);
   } catch (error) {
     return res.render("createProduct", {
       error: error.message,
@@ -154,8 +160,9 @@ async function postUpdateProduct(req, res) {
 
 async function deleteProduct(req, res) {
   try {
+    const categoryID = req.params.id;
     await db.deleteProduct(req.params.id);
-    res.redirect("/");
+    res.redirect(`/categories/${categoryID}`);
   } catch (error) {
     res.status(500).send("Error deleting product");
   }
