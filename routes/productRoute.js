@@ -5,9 +5,9 @@ const router = express.Router();
 router.get("/newProduct", mainController.getCreateProduct);
 router.post("/newProduct", mainController.postCreatedProduct);
 
-router.get("/:id/edit", mainController.getUpdateProduct);
-router.post("/:id/edit", mainController.postUpdateProduct);
+router.get("/:prodName/edit", mainController.getUpdateProduct);
+router.post("/:prodName/edit", mainController.postUpdateProduct);
 
-router.post("/:id/delete", mainController.deleteProduct);
+router.post("/:prodName/delete", mainController.deleteProduct);
 
 module.exports = router;

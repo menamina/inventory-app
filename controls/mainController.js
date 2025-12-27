@@ -15,9 +15,9 @@ async function getAllCategories(req, res) {
 }
 
 async function getSelectedCategory(req, res) {
-  const catID = req.params.id;
+  const catName = req.params.name;
   try {
-    const products = await db.getProductsByCategory(catID);
+    const products = await db.getProductsByCategory(catName);
     res.render("categoryItems", {
       products,
     });
@@ -50,7 +50,7 @@ async function postCreatedCategory(req, res) {
 
 async function getUpdateCategory(req, res) {
   try {
-    const category = await db.getCategoryById(req.params.id);
+    const category = await db.getCategoryByName(req.params.name);
     if (!category) {
       return res.render("updateCategory", {
         message: "category not found",
@@ -66,7 +66,7 @@ async function getUpdateCategory(req, res) {
     }
   } catch (error) {
     return res.render("updateCategory", {
-      erro: error.message,
+      error: error.message,
       message: null,
       category: null,
     });
@@ -74,11 +74,11 @@ async function getUpdateCategory(req, res) {
 }
 
 async function postUpdateCategory(req, res) {
-  const id = req.params.id;
+  const currentName = req.params.name;
   const categoryName = req.body.category;
   try {
-    await db.updateCategory(categoryName, id);
-    res.redirect("/");
+    await db.updateCategory(categoryName, currentName);
+    res.redirect(`/categories/${categoryName}`);
   } catch (err) {
     if (err) {
       return res.render("updateCategory", { error: err.message });
@@ -87,9 +87,9 @@ async function postUpdateCategory(req, res) {
 }
 
 async function deleteCategory(req, res) {
-  const id = req.params.id;
+  const categoryName = req.params.name;
   try {
-    await db.deleteCategory(id);
+    await db.deleteCategory(categoryName);
     res.redirect("/");
   } catch (error) {
     res.status(500).send("Error deleting category");
@@ -105,14 +105,14 @@ function getCreateProduct(req, res) {
 async function postCreatedProduct(req, res) {
   const { name, price, brandName, categoryName, quantity } = req.body;
   try {
-    const categoryId = await db.postProduct(
+    const savedCategoryName = await db.postProduct(
       name,
       price,
       brandName,
       categoryName,
       quantity
     );
-    res.redirect(`/categories/${categoryId}`);
+    res.redirect(`/categories/${savedCategoryName}`);
   } catch (error) {
     return res.render("createProduct", {
       error: error.message,
@@ -122,12 +122,12 @@ async function postCreatedProduct(req, res) {
 
 async function getUpdateProduct(req, res) {
   try {
-    const product = await db.getProductById(req.params.id);
+    const product = await db.getProductByName(req.params.prodName);
     if (!product) {
       return res.render("updateProduct", {
         message: "There is no product",
         error: null,
-        category: null,
+        product: null,
       });
     }
     res.render("updateProduct", {
@@ -139,18 +139,25 @@ async function getUpdateProduct(req, res) {
     res.render("updateProduct", {
       error: error.message,
       message: null,
-      category: null,
+      product: null,
     });
   }
 }
 
 async function postUpdateProduct(req, res) {
-  const id = req.params.id;
+  const currentName = req.params.prodName;
   const { name, price, brand, category, quantity } = req.body;
 
   try {
-    await db.updateProduct(name, price, brand, category, quantity, id);
-    res.redirect("/");
+    await db.updateProduct(
+      name,
+      price,
+      brand,
+      category,
+      quantity,
+      currentName
+    );
+    res.redirect(`/categories/${category}`);
   } catch (err) {
     if (err) {
       return res.render("updateProduct", { error: err });
@@ -160,9 +167,13 @@ async function postUpdateProduct(req, res) {
 
 async function deleteProduct(req, res) {
   try {
-    const categoryID = req.params.id;
-    await db.deleteProduct(req.params.id);
-    res.redirect(`/categories/${categoryID}`);
+    const productName = req.params.prodName;
+    const product = await db.getProductByName(productName);
+    await db.deleteProduct(productName);
+    if (product && product.category) {
+      return res.redirect(`/categories/${product.category}`);
+    }
+    res.redirect("/");
   } catch (error) {
     res.status(500).send("Error deleting product");
   }

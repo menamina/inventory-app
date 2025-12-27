@@ -4,20 +4,33 @@
   </head>
   <body>
     <div class="updatePage">
-      <form class="form" action="/categories/<%= category.id %>/edit" method="POST">
-        <% if (message) { %>
-        <p>Whoops! <%= message %></p>
-        <% } %>
-        <% if (error) { %>
-        <p>Whoops! <%= error %></p>
-        <% } %>
-        <h2 class="title">Update category</h2>
-        <div class="label-input">
-          <label>Category:</label>
-          <input name="category" value="<%= category.category %>" />
+      <% if (!category) { %>
+        <div class="form">
+          <% if (message) { %>
+          <p>Whoops! <%= message %></p>
+          <% } %> <% if (error) { %>
+          <p>Whoops! <%= error %></p>
+          <% } %>
         </div>
-        <button class="btn">update</button>
-      </form>
+      <% } else { %>
+        <form
+          class="form"
+          action="/categories/<%= category.category %>/edit"
+          method="POST"
+        >
+          <% if (message) { %>
+          <p>Whoops! <%= message %></p>
+          <% } %> <% if (error) { %>
+          <p>Whoops! <%= error %></p>
+          <% } %>
+          <h2 class="title">Update category</h2>
+          <div class="label-input">
+            <label>Category:</label>
+            <input name="category" value="<%= category.category %>" />
+          </div>
+          <button class="btn">update</button>
+        </form>
+      <% } %>
     </div>
   </body>
 </html>

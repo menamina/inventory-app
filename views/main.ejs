@@ -18,15 +18,15 @@
         <% categories.forEach(category => { %>
         <div class="catCard">
           <div class="catName">
-            <a href="/categories/<%= category.id%>">
+            <a href="/categories/<%= category.category%>">
               <%=category.category %>
             </a>
           </div>
           <div class="buttons">
-            <a href="/categories/<%= category.id%>/edit">update</a>
+            <a href="/categories/<%= category.category%>/edit">update</a>
             <form
               class="form"
-              action="/categories/<%=category.id%>/delete"
+              action="/categories/<%=category.category%>/delete"
               method="POST"
             >
               <button class="dlt" type="submit">delete</button>

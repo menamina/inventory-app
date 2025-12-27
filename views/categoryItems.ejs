@@ -36,8 +36,8 @@
                     <td>$<%= product.price %></td>
                     <td><%= product.quantity%></td>
                     <td class="options">
-                      <a href="/products/<%=product.id%>/edit">edit</a>
-                      <form class="form" action="/products/<%=product.id%>/delete" method="POST">
+                      <a href="/products/<%=product.name%>/edit">edit</a>
+                      <form class="form" action="/products/<%=product.name%>/delete" method="POST">
                         <button class="dlt">delete</button>
                       </form>
                     </td>

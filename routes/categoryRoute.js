@@ -5,11 +5,11 @@ const router = express.Router();
 router.get("/newCategory", mainController.getCreateCategory);
 router.post("/newCategory", mainController.postCreatedCategory);
 
-router.get("/:id", mainController.getSelectedCategory);
+router.get("/:name", mainController.getSelectedCategory);
 
-router.get("/:id/edit", mainController.getUpdateCategory);
-router.post("/:id/edit", mainController.postUpdateCategory);
+router.get("/:name/edit", mainController.getUpdateCategory);
+router.post("/:name/edit", mainController.postUpdateCategory);
 
-router.post("/:id/delete", mainController.deleteCategory);
+router.post("/:name/delete", mainController.deleteCategory);
 
 module.exports = router;
