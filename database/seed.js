@@ -17,7 +17,8 @@ CREATE TABLE IF NOT EXISTS products (
   name VARCHAR(255) NOT NULL,
   price NUMERIC(10,2),
   brand_id INTEGER NOT NULL,
-  categories_id INTEGER NOT NULL
+  categories_id INTEGER NOT NULL,
+  quantity INTEGER NOT NULL
 );
 
 INSERT INTO brands (brand)
@@ -28,11 +29,11 @@ INSERT INTO categories (category)
 VALUES ('Blush'), ('Bronzer'), ('Base'), ('Palette')
 ON CONFLICT (category) DO NOTHING;
 
-INSERT INTO products (name, price, brand_id, categories_id)
+INSERT INTO products (name, price, brand_id, categories_id, quantity)
 VALUES
-  ('Infallible concealer', 15.99, 1, 3),
-  ('Contour palette', 6.99, 2, 4),
-  ('Power Sculpt Velvet Powder Bronzer', 25.00, 3, 2)
+  ('Infallible concealer', 15.99, 1, 3, 200),
+  ('Contour palette', 6.99, 2, 4, 300),
+  ('Power Sculpt Velvet Powder Bronzer', 25.00, 3, 2, 240)
   `;
 
 async function main() {

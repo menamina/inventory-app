@@ -103,10 +103,10 @@ function getCreateProduct(req, res) {
 }
 
 async function postCreatedProduct(req, res) {
-  const { name, price, brandName, categoryName } = req.body;
+  const { name, price, brandName, categoryName, quantity } = req.body;
   try {
-    await db.postProduct(name, price, brandName, categoryName);
-    res.redirect("/");
+    await db.postProduct(name, price, brandName, categoryName, quantity);
+    res.redirect("/categoriesh65                                      ");
   } catch (error) {
     return res.render("createProduct", {
       error: error.message,
@@ -140,10 +140,10 @@ async function getUpdateProduct(req, res) {
 
 async function postUpdateProduct(req, res) {
   const id = req.params.id;
-  const { name, price, brand, category } = req.body;
+  const { name, price, brand, category, quantity } = req.body;
 
   try {
-    await db.updateProduct(name, price, brand, category, id);
+    await db.updateProduct(name, price, brand, category, quantity, id);
     res.redirect("/");
   } catch (err) {
     if (err) {

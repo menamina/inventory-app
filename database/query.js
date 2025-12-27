@@ -9,7 +9,7 @@ async function getAllCategories() {
 
 async function getProductsByCategory(catID) {
   const { rows } = await pool.query(
-    "SELECT products.id, products.name, products.price, brands.brand, categories.category FROM products LEFT JOIN brands ON products.brand_id = brands.id LEFT JOIN categories ON products.categories_id = categories.id WHERE products.categories_id = $1",
+    "SELECT products.id, products.name, products.price, brands.brand, categories.category, products.quantity FROM products LEFT JOIN brands ON products.brand_id = brands.id LEFT JOIN categories ON products.categories_id = categories.id WHERE products.categories_id = $1",
     [catID]
   );
   return rows;
@@ -23,7 +23,13 @@ async function updateCategory(category, id) {
 }
 
 async function deleteCategory(id) {
-  await pool.query("DELETE FROM categories WHERE id = $1", [id]);
+  try {
+    // Remove products first to satisfy potential FK constraints, then delete the category
+    await pool.query("DELETE FROM products WHERE categories_id = $1", [id]);
+    await pool.query("DELETE FROM categories WHERE id = $1", [id]);
+  } catch (error) {
+    throw error;
+  }
 }
 
 async function getCategoryById(id) {
@@ -37,7 +43,7 @@ async function postCategory(category) {
   await pool.query("INSERT INTO categories (category) VALUES ($1)", [category]);
 }
 
-async function postProduct(name, price, brandName, categoryName) {
+async function postProduct(name, price, brandName, categoryName, quantity) {
   let brandID;
   let catID;
 
@@ -71,8 +77,8 @@ async function postProduct(name, price, brandName, categoryName) {
 
   try {
     await pool.query(
-      "INSERT INTO products (name, price, brand_id, categories_id) VALUES ($1, $2, $3, $4)",
-      [name, price, brandID, catID]
+      "INSERT INTO products (name, price, brand_id, categories_id, quantity) VALUES ($1, $2, $3, $4, $5)",
+      [name, price, brandID, catID, quantity]
     );
   } catch (err) {
     throw err;
@@ -81,13 +87,13 @@ async function postProduct(name, price, brandName, categoryName) {
 
 async function getProductById(id) {
   const { rows } = await pool.query(
-    "SELECT products.id, products.name, products.price, brands.brand, categories.category FROM products LEFT JOIN brands ON products.brand_id = brands.id LEFT JOIN categories ON products.categories_id = categories.id WHERE products.id = $1",
+    "SELECT products.id, products.name, products.price, brands.brand, categories.category, products.quantity FROM products LEFT JOIN brands ON products.brand_id = brands.id LEFT JOIN categories ON products.categories_id = categories.id WHERE products.id = $1",
     [id]
   );
   return rows[0];
 }
 
-async function updateProduct(name, price, brand, category, id) {
+async function updateProduct(name, price, brand, category, quantity, id) {
   let brandID;
   let catID;
 
@@ -120,8 +126,8 @@ async function updateProduct(name, price, brand, category, id) {
 
   try {
     await pool.query(
-      "UPDATE products SET name  = $1, price = $2, brand_id = $3, categories_id = $4 WHERE id = $5",
-      [name, price, brandID, catID, id]
+      "UPDATE products SET name  = $1, price = $2, brand_id = $3, categories_id = $4, quantity = $5 WHERE id = $6",
+      [name, price, brandID, catID, quantity, id]
     );
   } catch (error) {
     throw error;
