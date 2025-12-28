@@ -53,8 +53,8 @@
                     <td>$<%= product.price %></td>
                     <td><%= product.quantity%></td>
                     <td class="options">
-                      <a class="edit" href="/products/<%=product.name%>/edit">edit</a>
-                      <form class="form" action="/products/<%=product.name%>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
+                      <a class="edit" href="/categories/<%=catName%>/<%=product.name%>/edit">edit</a>
+                      <form class="form" action="/categories/<%=catName%>/<%=product.name%>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
                         <button class="dlt">delete</button>
                       </form>
                     </td>

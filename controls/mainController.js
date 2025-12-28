@@ -161,13 +161,9 @@ async function postUpdateProduct(req, res) {
 
 async function deleteProduct(req, res) {
   try {
-    const productName = req.params.prodName;
-    const product = await db.getProductByName(productName);
-    await db.deleteProduct(productName);
-    if (product && product.category) {
-      return res.redirect(`/categories/${product.category}`);
-    }
-    res.redirect("/");
+    const { category, prodName } = req.params;
+    await db.deleteProduct(prodName);
+    res.redirect(`/categories/${category}`);
   } catch (error) {
     res.status(500).send("Error deleting product");
   }

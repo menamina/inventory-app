@@ -15,7 +15,7 @@
       <% } else { %>
       <form
         class="form"
-        action="/products/<%= product.name %>/edit"
+        action="/categories/<%= product.category %>/<%= product.name %>/edit"
         method="POST"
       >
         <% if (message) { %>
