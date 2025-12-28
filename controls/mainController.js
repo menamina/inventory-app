@@ -10,6 +10,7 @@ async function getAllCategories(req, res) {
       categories,
     });
   } catch (error) {
+    console.error("Error fetching categories:", error);
     res.status(500).send("Error fetching categories");
   }
 }
