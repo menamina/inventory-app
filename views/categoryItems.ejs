@@ -37,14 +37,14 @@
 
             <tbody>
                 <% products.forEach(product => { %>
-                  <tr>
+                  <tr class="productInv">
                     <td><%= product.name %></td>
                     <td><%= product.brand %></td>
                     <td><%= product.category %></td>
                     <td>$<%= product.price %></td>
                     <td><%= product.quantity%></td>
                     <td class="options">
-                      <a href="/products/<%=product.name%>/edit">edit</a>
+                      <a class="edit" href="/products/<%=product.name%>/edit">edit</a>
                       <form class="form" action="/products/<%=product.name%>/delete" method="POST">
                         <button class="dlt">delete</button>
                       </form>
