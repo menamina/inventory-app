@@ -83,6 +83,7 @@
   background-color: rgb(242, 212, 217);
   font-style: italic;
   cursor: pointer;
+  border-radius: 4%;
 }
 
 .title {

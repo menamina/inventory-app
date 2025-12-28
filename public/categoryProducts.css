@@ -102,3 +102,7 @@ a:visited {
   text-decoration: none;
   color: black;
 }
+
+.home {
+  margin-top: 50px;
+}
