@@ -18,6 +18,11 @@
   height: 100vh;
 }
 
+a {
+  align-self: center;
+  margin-top: 50px;
+}
+
 .title {
   text-align: center;
 }
@@ -34,11 +39,24 @@
   width: 100%;
 }
 
+a,
+.btn {
+  cursor: pointer;
+}
+
 .btn {
   border: none;
   background-color: rgb(103, 100, 100);
   color: white;
-  width: 100px;
+  height: 30px;
+  width: 120px;
   border-radius: 5px;
   align-self: center;
+  margin-top: 20px;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: black;
 }
