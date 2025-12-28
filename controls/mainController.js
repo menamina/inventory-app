@@ -16,7 +16,7 @@ async function getAllCategories(req, res) {
 }
 
 async function getSelectedCategory(req, res) {
-  const catName = req.params.name;
+  const catName = req.params.category;
   try {
     const products = await db.getProductsByCategory(catName);
     res.render("categoryItems", {
@@ -101,8 +101,11 @@ async function deleteCategory(req, res) {
 // PROD METHODS
 
 function getCreateProduct(req, res) {
-  const category = req.query.category || "";
-  res.render("createProduct", { error: null, category });
+  const category = req.params.category;
+  res.render("createProduct", {
+    error: null,
+    category,
+  });
 }
 
 async function postCreatedProduct(req, res) {

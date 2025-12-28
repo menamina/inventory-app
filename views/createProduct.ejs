@@ -4,7 +4,7 @@
   </head>
   <body>
     <div class="newProd">
-      <form class="form" action="/products/newProduct" method="POST">
+      <form class="form" action="/categories/<%= category %>/newProduct" method="POST">
         <% if (error) { %>
         <h2 class="title"><%= error %></h2>
         <% } %>
@@ -36,9 +36,7 @@
           <input name="quantity" id="quantity" required />
         </div>
         <button class="btn">submit</button>
-        <a class="cancel" href="/" style="display: block; text-align: center"
-          >cancel</a
-        >
+        <a class="link" href="/categories/<%= category %>">cancel</a>
       </form>
     </div>
   </body>

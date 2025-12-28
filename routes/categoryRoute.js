@@ -5,7 +5,10 @@ const router = express.Router();
 router.get("/newCategory", mainController.getCreateCategory);
 router.post("/newCategory", mainController.postCreatedCategory);
 
-router.get("/:name", mainController.getSelectedCategory);
+router.get("/:category/newProduct", mainController.getCreateProduct);
+router.post("/:category/newProduct", mainController.postCreatedProduct);
+
+router.get("/:category", mainController.getSelectedCategory);
 
 router.get("/:name/edit", mainController.getUpdateCategory);
 router.post("/:name/edit", mainController.postUpdateCategory);
