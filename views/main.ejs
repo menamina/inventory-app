@@ -17,11 +17,9 @@
       <div class="categoryMainGrid">
         <% categories.forEach(category => { %>
         <div class="catCard">
-          <div class="catName">
-            <a href="/categories/<%= category.category%>">
-              <%=category.category %>
-            </a>
-          </div>
+          <a class="catName" href="/categories/<%= category.category%>">
+            <div><%=category.category %></div>
+          </a>
           <div class="buttons">
             <a href="/categories/<%= category.category%>/edit">update</a>
             <form

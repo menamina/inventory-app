@@ -5,47 +5,47 @@
   <body>
     <div class="updatePage">
       <% if (!product) { %>
-        <div class="form">
-          <% if (message) { %>
-          <p>Whoops! <%= message %></p>
-          <% } %> <% if (error) { %>
-          <p>Whoops! <%= error %></p>
-          <% } %>
-        </div>
+      <div class="form">
+        <% if (message) { %>
+        <p>Whoops! <%= message %></p>
+        <% } %> <% if (error) { %>
+        <p>Whoops! <%= error %></p>
+        <% } %>
+      </div>
       <% } else { %>
-        <form
-          class="form"
-          action="/products/<%= product.name %>/edit"
-          method="POST"
-        >
-          <% if (message) { %>
-          <p>Whoops! <%= message %></p>
-          <% } %> <% if (error) { %>
-          <p>Whoops! <%= error %></p>
-          <% } %>
-          <h2 class="title">Update product</h2>
-          <div class="label-input">
-            <label>Product:</label>
-            <input name="name" value="<%= product.name %>" />
-          </div>
-          <div class="label-input">
-            <label>Brand:</label>
-            <input name="brand" value="<%= product.brand %>" />
-          </div>
-          <div class="label-input">
-            <label>Category:</label>
-            <input name="category" value="<%= product.category %>" />
-          </div>
-          <div class="label-input">
-            <label>Price:</label>
-            <input name="price" value="<%= product.price %>" />
-          </div>
-          <div class="label-input">
-            <label>Quantity:</label>
-            <input name="quantity" value="<%= product.quantity %>" />
-          </div>
-          <button class="btn">submit</button>
-        </form>
+      <form
+        class="form"
+        action="/products/<%= product.name %>/edit"
+        method="POST"
+      >
+        <% if (message) { %>
+        <p>Whoops! <%= message %></p>
+        <% } %> <% if (error) { %>
+        <p>Whoops! <%= error %></p>
+        <% } %>
+        <h2 class="title">Update product</h2>
+        <div class="label-input">
+          <label>Product:</label>
+          <input name="name" value="<%= product.name %>" />
+        </div>
+        <div class="label-input">
+          <label>Brand:</label>
+          <input name="brand" value="<%= product.brand %>" />
+        </div>
+        <div class="label-input">
+          <label>Category:</label>
+          <input name="category" value="<%= product.category %>" />
+        </div>
+        <div class="label-input">
+          <label>Price:</label>
+          <input name="price" value="<%= product.price %>" />
+        </div>
+        <div class="label-input">
+          <label>Quantity:</label>
+          <input name="quantity" value="<%= product.quantity %>" />
+        </div>
+        <button class="btn">submit</button>
+      </form>
       <% } %>
     </div>
   </body>

@@ -79,6 +79,12 @@
   font-size: 1.5rem;
 }
 
+.catName:hover {
+  background-color: rgb(242, 212, 217);
+  font-style: italic;
+  cursor: pointer;
+}
+
 .title {
   display: flex;
   justify-self: center;

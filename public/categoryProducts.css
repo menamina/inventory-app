@@ -4,12 +4,20 @@
 
 .inventoryParentGrid,
 .search-add,
-.options {
+.options,
+.categoryName {
   display: flex;
 }
 
 .inventoryParentGrid {
   flex-direction: column;
+}
+
+.categoryName {
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+  font-style: italic;
 }
 
 .options {
@@ -53,7 +61,8 @@ td.options {
 }
 
 .productInv:hover {
-  background-color: rgb(230, 229, 229);
+  background-color: rgb(246, 236, 187);
+  cursor: pointer;
 }
 
 .form {
@@ -66,7 +75,6 @@ td.options {
 
 .dlt {
   border: 1px solid rgb(116, 183, 216);
-  background-color: rgb(255, 255, 255);
   margin: 0;
   padding: 0;
 }
@@ -74,6 +82,7 @@ td.options {
 .edit,
 .dlt {
   width: 40px;
+  background-color: rgb(255, 255, 255);
 }
 
 .noProds {
