@@ -12,6 +12,11 @@
           href="/products/newProduct"
           >add a product</a
         >
+        <a
+          class="link"
+          href="/"
+          >home</a
+        >
       </div>
       <% } else { %>
       <div class="inventoryParentGrid">
@@ -49,7 +54,7 @@
                     <td><%= product.quantity%></td>
                     <td class="options">
                       <a class="edit" href="/products/<%=product.name%>/edit">edit</a>
-                      <form class="form" action="/products/<%=product.name%>/delete" method="POST">
+                      <form class="form" action="/products/<%=product.name%>/delete" method="POST" onsubmit="return confirm('Are you sure you want to delete this product?');">
                         <button class="dlt">delete</button>
                       </form>
                     </td>

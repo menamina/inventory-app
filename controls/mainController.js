@@ -108,16 +108,8 @@ function getCreateProduct(req, res) {
 async function postCreatedProduct(req, res) {
   const { name, price, brandName, categoryName, quantity } = req.body;
   try {
-    const newProd = await db.postProduct(
-      name,
-      price,
-      brandName,
-      categoryName,
-      quantity
-    );
-    res.redirect(`/categories/${newProd}`, {
-      newProd,
-    });
+    await db.postProduct(name, price, brandName, categoryName, quantity);
+    res.redirect("/");
   } catch (error) {
     return res.render("createProduct", {
       error: error.message,
