@@ -4,7 +4,11 @@
   </head>
   <body>
     <div class="newProd">
-      <form class="form" action="/categories/<%= category %>/newProduct" method="POST">
+      <form
+        class="form"
+        action="/categories/<%= category %>/newProduct"
+        method="POST"
+      >
         <% if (error) { %>
         <h2 class="title"><%= error %></h2>
         <% } %>
@@ -23,7 +27,7 @@
           <input
             name="categoryName"
             id="category"
-            value="<%= category || '' %>"
+            value="<%= category %>"
             required
           />
         </div>

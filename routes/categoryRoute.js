@@ -14,9 +14,9 @@ router.post("/:category/:prodName/delete", mainController.deleteProduct);
 
 router.get("/:category", mainController.getSelectedCategory);
 
-router.get("/:name/edit", mainController.getUpdateCategory);
-router.post("/:name/edit", mainController.postUpdateCategory);
+router.get("/:category/edit", mainController.getUpdateCategory);
+router.post("/:category/edit", mainController.postUpdateCategory);
 
-router.post("/:name/delete", mainController.deleteCategory);
+router.post("/:category/delete", mainController.deleteCategory);
 
 module.exports = router;

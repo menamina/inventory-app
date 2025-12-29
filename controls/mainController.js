@@ -52,7 +52,7 @@ async function postCreatedCategory(req, res) {
 
 async function getUpdateCategory(req, res) {
   try {
-    const category = await db.getCategoryByName(req.params.name);
+    const category = await db.getCategoryByName(req.params.category);
     if (!category) {
       return res.render("updateCategory", {
         message: "category not found",
@@ -76,7 +76,7 @@ async function getUpdateCategory(req, res) {
 }
 
 async function postUpdateCategory(req, res) {
-  const currentName = req.params.name;
+  const currentName = req.params.category;
   const categoryName = req.body.category;
   try {
     await db.updateCategory(categoryName, currentName);
@@ -89,7 +89,7 @@ async function postUpdateCategory(req, res) {
 }
 
 async function deleteCategory(req, res) {
-  const categoryName = req.params.name;
+  const categoryName = req.params.category;
   try {
     await db.deleteCategory(categoryName);
     res.redirect("/");
@@ -112,7 +112,7 @@ async function postCreatedProduct(req, res) {
   const { name, price, brandName, categoryName, quantity } = req.body;
   try {
     await db.postProduct(name, price, brandName, categoryName, quantity);
-    res.redirect("/");
+    res.redirect(`/categories/${categoryName}`);
   } catch (error) {
     return res.render("createProduct", {
       error: error.message,
